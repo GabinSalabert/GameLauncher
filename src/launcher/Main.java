@@ -1,3 +1,5 @@
+package launcher;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Stage thestage;
+    private FXMLLoader fxml;
 
 
     public static void main(String[] args) {
@@ -16,12 +19,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("ControllerMainMenu.fxml"));
-        }
-        catch {
-            System.out.println(failed);
-        }
+        fxml = new FXMLLoader(Main.class.getResource("ControllerMainMenu.fxml"));
+        Parent root = fxml.load();
+
         Scene scene = new Scene(root, 300, 275);
 
         stage.setTitle("lul eksdee");
