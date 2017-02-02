@@ -7,7 +7,7 @@ import javafx.scene.text.Text;
 
 public class ControllerMainMenu {
 	
-	@FXML private Text actiontarget;
+	//@FXML private Text actiontarget;
 
 	private Main main;
 
@@ -20,6 +20,9 @@ public class ControllerMainMenu {
 	} 
 
 	public void HandleLoginAction() {
-		actiontarget.setText("you pressed da button");
 	}
 }
+
+
+/*	<Button text="Sign in"
+		onAction="#HandleLoginAction"/>*/

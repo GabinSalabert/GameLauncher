@@ -1,0 +1,9 @@
+#gameBar {
+	-fx-background-color: #351245;
+
+}
+
+#swag {
+	-fx-font-size: 50px;
+	-fx-fill: red;
+}

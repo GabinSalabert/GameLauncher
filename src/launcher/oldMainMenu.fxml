@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
+
 
 
 
@@ -16,13 +16,27 @@
 	<padding><Insets top="0" right="10" bottom = "0" left = "10"/></padding>
 
 
+	<Text id="swag" text="Welcome"
+		GridPane.columnIndex = "0" GridPane.rowIndex = "0"
+		GridPane.columnSpan = "2"/>
 
-	<HBox id="gameBar" spacing="10" alignment="bottom_center"
+
+	<Label text="AZERTY"
+		GridPane.columnIndex = "0" GridPane.rowIndex = "1"/>
+
+	<TextField
+		GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+
+
+
+	<Text fx:id="actiontarget"
+		GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+	<HBox  id="gameBar" spacing="10" alignment="bottom_left"
 		GridPane.columnIndex="1" GridPane.rowIndex="4">
 
-		<Rectangle id="ye" x="0" y="0" width="100" lenght="200" fill="red" />
-
-		
+		<Button text="Sign in"
+		onAction="#HandleLoginAction"/>
 
 	</HBox>
 
