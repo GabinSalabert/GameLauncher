@@ -23,7 +23,7 @@ public class Main extends Application {
         Parent root = fxml.load();
 
         Scene scene = new Scene(root, 300, 275);
-
+        //scene.getStyleSheets().add(Main.class.getResource("MainMenu.css"))
         stage.setTitle("lul eksdee");
         stage.setScene(scene);
         stage.show();

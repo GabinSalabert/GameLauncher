@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -8,32 +9,24 @@
 
 
 
-<GridPane fx:controller="launcher.ControllerMainMenu"
-	xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 
-<padding><Insets top="25" right="25" bottom = "25" left = "25"/></padding>
+<GridPane styleClass="root" fx:controller="launcher.ControllerMainMenu"
+	xmlns:fx="http://javafx.com/fxml" hgap="10" vgap="10">
 
-
-<Text text="Welcome"
-	GridPane.columnIndex = "0" GridPane.rowIndex = "0"
-	GridPane.columnSpan = "2"/>
+	<padding><Insets top="0" right="10" bottom = "0" left = "10"/></padding>
 
 
-<Label text="AZERTY"
-	GridPane.columnIndex = "0" GridPane.rowIndex = "1"/>
 
-<TextField
-	GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+	<HBox id="gameBar" spacing="10" alignment="bottom_center"
+		GridPane.columnIndex="1" GridPane.rowIndex="4">
 
+		<Text text="yolo"/>
 
-<HBox spacing="10" alignment="bottom_right"
-	GridPane.columnIndex="1" GridPane.rowIndex="4">
-	<Button text="Sign in"
-		onAction="#HandleLoginAction"/>
-</HBox>
+	</HBox>
 
-<Text fx:id="actiontarget"
-	GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+	<stylesheets>
+		<URL value="@MainMenu.css" />
+	</stylesheets>
 
 
 </GridPane>
