@@ -1,4 +1,7 @@
 import org.dishevelled.processing.frames.*;
+import ddf.minim.*;
+
+
 
 
 // Declare all we need as variable \\
@@ -7,6 +10,8 @@ int head[] = new int[2];
 int head2[] = new int[2];
 
 int item[] = new int[2];
+int frame = 0;
+
 
 int bodyLength = 2;//first length, at the beginning
 int bodyLength2 = 2;
@@ -25,10 +30,12 @@ boolean turn = false; //A little bug if you hit 2 keys in the same time, the sna
 boolean turn2 = false;
 boolean loose1 = false;
 boolean loose2 = false;
+boolean music = true;
 
 PImage img, img2;
 
-
+AudioPlayer player, player2, player3;
+Minim minim;//audio context
 
 
 
@@ -38,7 +45,7 @@ PImage img, img2;
 
 void setup() {
   size(728, 481); //Window's size (+1 for edges)
-
+  
   //Snake's head position
   head[0] = int(width/20);
   head[1] = int(height/20);
@@ -61,8 +68,15 @@ void setup() {
   img = loadImage("Ban4.jpg");
   img2 = loadImage("Snake.jpeg");
 
-  frameRate(12); //FPS
+  frameRate(60); //FPS
+  
+  minim = new Minim(this);
+  player = minim.loadFile("Happy-electronic-music.mp3", 2048);
+  player2 = minim.loadFile("Casual-friday-electronic-beat-music.mp3", 2048);
+  player3 = minim.loadFile("fail-trombone-01.mp3", 2048);
 }
+
+
 
 
 
@@ -89,6 +103,23 @@ void keyPressed() { //Direction in case of event
     if (key == 'q' && (dir2 == 0 || dir2 == 2)) dir2 = 3; //Left
     if (key == 'd' && (dir2 == 0 || dir2 == 2)) dir2 = 1; //Rigth
   }
+  
+  if (key == 'm' && music == true){
+    player.mute();
+    player2.mute();
+    player3.mute();
+    music = false;
+  }
+  
+  if (key == 'p' && music == false){
+    if (unJoueur == 1 || deuxJoueur == 2){
+      player2.unmute();
+    }
+    if (unJoueur == 0 && deuxJoueur == 0){
+      player.unmute();
+    }
+    music = true;
+  }
 }
 
 
@@ -107,6 +138,7 @@ void draw() {
 
   //Create the canva
   if (unJoueur == 0 && deuxJoueur == 0) {
+    player.play();
     image(img2, 0, 0, width, height);
     stroke(150);
     rect(0, 0, width, 94);
@@ -121,7 +153,9 @@ void draw() {
 
   //Mode Solo
 
-  if (unJoueur == 1) {  
+  if (unJoueur == 1) { 
+    player.close();
+    player2.play();
     background(0);
     fill(30); //Grey color for grid
     noStroke(); 
@@ -144,20 +178,22 @@ void draw() {
     }
 
     if (!over) {
-
-      for (int k = bodyLength-1; k > 0; k--) { //Browse the body but upside down and without the head. The body has to follow the head
-        body[k].setX(body[k-1].getX()); //Set the body[i] position with the body[i-1] position (x)
-        body[k].setY(body[k-1].getY()); //Set the body[i] position with the body[i-1] position (y)
+  
+      if (frame == 5) {
+        for (int k = bodyLength-1; k > 0; k--) { //Browse the body but upside down and without the head. The body has to follow the head
+          body[k].setX(body[k-1].getX()); //Set the body[i] position with the body[i-1] position (x)
+          body[k].setY(body[k-1].getY()); //Set the body[i] position with the body[i-1] position (y)
+        }
+  
+        body[0].setX(head[0]); //Set the body's first part with the head position (x) 
+        body[0].setY(head[1]); //Set the body's first part with the head position (x)
+  
+        if (dir == 0) head[1] --; //Move head towards top
+        else if (dir == 1) head[0] ++; //Move head towards rigth
+        else if (dir == 2) head[1] ++; //Move head towards bottom
+        else head[0] --; //Move head towards left
       }
-
-      body[0].setX(head[0]); //Set the body's first part with the head position (x) 
-      body[0].setY(head[1]); //Set the body's first part with the head position (x)
-
-      if (dir == 0) head[1] --; //Move head towards top
-      else if (dir == 1) head[0] ++; //Move head towards rigth
-      else if (dir == 2) head[1] ++; //Move head towards bottom
-      else head[0] --; //Move head towards left
-
+      frame = (frame+1) % 6;
       if (head[0] == item[0] && head[1] == item[1]) {
         score++;
         item[0] = int(random(width/10));
@@ -170,8 +206,11 @@ void draw() {
 
       fill(255); 
       text("Score : "+score, width/2, 10); //Write the message
-    } else {
-
+    } 
+    
+    else {
+      
+      player3.play();
       fill(0, 200);
       rect(0, 0, width, height);
       fill(255); //Dark shadow
@@ -204,7 +243,9 @@ void draw() {
 
   //Mode Duo
 
-  if (deuxJoueur == 2) {  
+  if (deuxJoueur == 2) {
+    player.close();
+    player2.play();
     background(0);
     fill(30); //Grey color for grid
     noStroke(); 
@@ -299,8 +340,11 @@ void draw() {
       fill(255); 
       text("Score : "+score, width/3, 10); //Write the message
       text("Score : "+score2, width/1.5, 10); //Write the message
-    } else {
-
+    } 
+    
+    else {
+      
+      player3.play();
       fill(0, 200);
       rect(0, 0, width, height);
       fill(255); //Dark shadow
