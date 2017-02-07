@@ -21,31 +21,7 @@ class Brick {
   
 
 
-  Brick(int sp, Brick b) {
 
-    sq = new Square[4];
-    xDir = new int[4];
-    yDir = new int[4];
-    patt = new int[3];
-    c = b.c;
-
-    speed = sp;
-
-    for (int  i=0; i < 3; i++)
-      patt[i] = new b.patt[i];
-
-    sq[0] = new Square(width/2, 0, c);
-    for (int i=1; i < 4; i++) {
-      sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
-    }
-
-    frame = 0;
-    falling = true;
-    up = false;
-    down = false;
-    left = false;
-    right = false;
-  }
 
 
   Brick(int sp, int t) {
@@ -77,13 +53,19 @@ class Brick {
 
     initDir();
     
-    sq[0] = new Square(width/2, 0, c);
-    for (int i=1; i < 4; i++) {
-      sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
+    if (sp > 0) {
+    sq[0] = new Square(xMax/2, 0, c);
+      for (int i=1; i < 4; i++) {
+        sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
+      }
     }
-    
-    if (sp == 0)
+    else if (sp == 0) {
+      sq[0] = new Square(xMax+(width-xMax)/2-15, 90, c);
+      for (int i=1; i < 4; i++) {
+        sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
+      }
       return;
+    }
 
     speed = sp;
     fspeed = sp;
@@ -98,8 +80,8 @@ class Brick {
 
   }
   
-  void.display() {
-    sq[0].pos = new PVector(4*width/5, 100);
+  void display() {
+    sq[0].pos = new PVector(4*xMax/5, 100);
   }
 
   void draw() {
@@ -158,9 +140,9 @@ class Brick {
     for (int i=0; i < 4; i++) {
       if (sq[i].pos.x/15 < 0)
         moveRight();
-      else if (sq[i].pos.x/15 > width/15)
+      else if (sq[i].pos.x/15 > xMax/15)
         moveLeft();
-      if (sq[i].pos.x > width-15 || lines[(int)b.sq[i].pos.y/15][(int)b.sq[i].pos.x/15] != null && sq[i].pos.x > sq[0].pos.x){
+      if (sq[i].pos.x > xMax-15 || lines[(int)b.sq[i].pos.y/15][(int)b.sq[i].pos.x/15] != null && sq[i].pos.x > sq[0].pos.x){
         moveLeft();
       }
       else if (sq[i].pos.x < 0 || lines[(int)b.sq[i].pos.y/15][(int)b.sq[i].pos.x/15] != null && sq[i].pos.x < sq[0].pos.x) {
