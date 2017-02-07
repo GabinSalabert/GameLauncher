@@ -19,6 +19,35 @@ class Brick {
   Type type;
   color c;
   
+
+
+  Brick(int sp, Brick b) {
+
+    sq = new Square[4];
+    xDir = new int[4];
+    yDir = new int[4];
+    patt = new int[3];
+    c = b.c;
+
+    speed = sp;
+
+    for (int  i=0; i < 3; i++)
+      patt[i] = new b.patt[i];
+
+    sq[0] = new Square(width/2, 0, c);
+    for (int i=1; i < 4; i++) {
+      sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
+    }
+
+    frame = 0;
+    falling = true;
+    up = false;
+    down = false;
+    left = false;
+    right = false;
+  }
+
+
   Brick(int sp, int t) {
     sq = new Square[4];
     xDir = new int[4];
@@ -53,6 +82,9 @@ class Brick {
       sq[i] = new Square(sq[i-1].pos.x + xDir[patt[i-1]], sq[i-1].pos.y + yDir[patt[i-1]], c); //express coordinates of index n with pattern and index n-1' coordinates
     }
     
+    if (sp == 0)
+      return;
+
     speed = sp;
     fspeed = sp;
     frame = 0;
@@ -66,6 +98,10 @@ class Brick {
 
   }
   
+  void.display() {
+    sq[0].pos = new PVector(4*width/5, 100);
+  }
+
   void draw() {
     for (int i=0; i < 4; i++) {
       sq[i].draw();   

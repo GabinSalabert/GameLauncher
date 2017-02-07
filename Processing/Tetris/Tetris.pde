@@ -1,4 +1,4 @@
-Brick b;
+Brick b, d;
 
 int maxY[];
 Square lines[][];
@@ -25,6 +25,8 @@ void setup() {
   }
 
   b = new Brick(30, (int)random(5));
+  d = new Brick(0, (int)random(5));
+  d.display();
 }
 
 
@@ -39,29 +41,27 @@ void draw() {
         lines[i][j].draw();
     } 
   }
-
+  d.draw();
   b.fall();
   b.draw();
   clearLine();
-  eat();
   if (b.frame == b.fspeed)
     pile();
 }
 
 void pile() {
-  if (stopFall())
+  if (stopFall()) {
     b.falling = false;
-}
-
-void eat() {
-  if (!b.falling) { //if the brick stopped
     for (int i=0; i < 4; i++) { //for each square
       maxY[(int)b.sq[i].pos.x/15] -= 15; //increase max height for the column which contains this square
       lines[(int)b.sq[i].pos.y/15][(int)b.sq[i].pos.x/15] = new Square(b.sq[i], b.c); //add square to environnement
     }
-    b = new Brick(30, (int)random(5));
+    b = new Brick(30, d);
+
   }
 }
+
+
 
 void clearLine() {
   boolean full;

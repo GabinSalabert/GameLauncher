@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:controller="launcher.ControllerMainMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane centerShape="false" dividerPositions="0.8" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" scaleShape="false">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="598.0">
+               <children>
+                  <Button layoutX="268.0" layoutY="274.0" mnemonicParsing="false" text="Play" />
+                  <TextField layoutX="206.0" layoutY="24.0" prefHeight="243.0" prefWidth="171.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="598.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Snake" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="25.0" />
+                  <Button layoutX="130.0" layoutY="35.0" mnemonicParsing="false" text="Tetris" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="25.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

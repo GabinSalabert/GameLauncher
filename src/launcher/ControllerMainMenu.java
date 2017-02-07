@@ -2,12 +2,14 @@ package launcher;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
-
+import javafx.event.ActionEvent;
 
 
 public class ControllerMainMenu {
 	
-	//@FXML private Text actiontarget;
+	@FXML private Button snakeBtn;
+	@FXML private Button tetrisBtn;
+
 
 	private Main main;
 
@@ -19,7 +21,14 @@ public class ControllerMainMenu {
 		this.main = main;
 	} 
 
-	public void HandleLoginAction() {
+	@FXML
+	public void synopSnake(ActionEvent e) {
+		return;
+	}
+
+	@FXML
+	public void synopTetris(ActionEvent e) {
+		return;
 	}
 }
 

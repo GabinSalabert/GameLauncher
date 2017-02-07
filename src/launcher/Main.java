@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        fxml = new FXMLLoader(Main.class.getResource("ControllerMainMenu.fxml"));
+        fxml = new FXMLLoader(Main.class.getResource("Controller.fxml"));
         Parent root = fxml.load();
 
         Scene scene = new Scene(root, 300, 275);

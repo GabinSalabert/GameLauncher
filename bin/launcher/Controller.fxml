@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.ControllerMainMenu">
+   <children>
+      <SplitPane centerShape="false" dividerPositions="0.8" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" scaleShape="false">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="598.0">
+               <children>
+                  <Button layoutX="268.0" layoutY="274.0" mnemonicParsing="false" text="Play" />
+                  <TextField fx:id="synopsis" layoutX="91.0" layoutY="24.0" prefHeight="243.0" prefWidth="405.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="598.0">
+               <children>
+                  <Separator layoutX="296.0" orientation="VERTICAL" prefHeight="77.0" prefWidth="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="296.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutY="1.0" opacity="0.58" pickOnBounds="true">
+                     <image>
+                        <Image url="@pictures/snake.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutX="301.0" layoutY="-80.0" opacity="0.58" pickOnBounds="true">
+                     <image>
+                        <Image url="@pictures/tetris.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="snakeBtn" mnemonicParsing="false" onAction="#synopSnake" text="Snake" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="25.0" />
+                  <Button fx:id="tetrisBtn" layoutX="130.0" layoutY="35.0" mnemonicParsing="false" onAction="#synopTetris" text="Tetris" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="25.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
