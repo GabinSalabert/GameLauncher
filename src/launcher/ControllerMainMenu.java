@@ -7,8 +7,8 @@ import javafx.event.ActionEvent;
 
 public class ControllerMainMenu {
 	
-	@FXML private Button snakeBtn;
-	@FXML private Button tetrisBtn;
+	//@FXML private Button snakeBtn;
+	//@FXML private Button tetrisBtn;
 
 
 	private Main main;

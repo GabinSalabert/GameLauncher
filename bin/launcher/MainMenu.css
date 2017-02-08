@@ -1,9 +1,13 @@
-.gameBar {
-	-fx-background-color: #351245;
+/*.gameBar {
+	-fx-background-color: yellow;
 
 }
 
 #swag {
 	-fx-font-size: 50px;
 	-fx-fill: red;
+}*/
+
+body{
+	-fx-background-color: grey;
 }

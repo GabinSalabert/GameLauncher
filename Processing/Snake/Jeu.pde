@@ -89,7 +89,6 @@ public class Jeu {
 
     if (unJoueur == 1) { 
       retry = 0;
-      deuxJoueur = 0;
       player.close();
       player2.play();
       background(0);
@@ -174,6 +173,9 @@ public class Jeu {
     }
 
     if (retry == 42) {
+      retry = 0;
+      unJoueur = 0;
+      deuxJoueur = 0;
       jeu = new Jeu();
     }
 
@@ -196,7 +198,6 @@ public class Jeu {
 
     if (deuxJoueur == 2) {
       retry = 0;
-      unJoueur = 0;
       player.close();
       player2.play();
       background(0);
@@ -319,14 +320,14 @@ public class Jeu {
         buttonRetry.drawBr();
         buttonExit.quit();  
         retry = buttonRetry.retry();
-      }
+        
+        if (retry == 42) {
+          jeu = new Jeu();
+        }
+       }
 
       turn = false;
       turn2 = false;
-    }
-
-    if (retry == 42) {
-      jeu = new Jeu();
     }
   }
 }
