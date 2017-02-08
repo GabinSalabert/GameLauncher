@@ -12,7 +12,7 @@ public class Ghost{
 		for (int i=0; i < 4; i++) {
 			sq[i] = new Square(b.sq[i], c);
 		}
-    c = b.c;
+    	c = new color(red(b.c), green(b.c), blue(b.c), 100);
 	}
 
 	void draw() {
@@ -20,6 +20,10 @@ public class Ghost{
 		for (int i=0; i < 4; i++) {
 			if ((int)maxY[sq[i].pos.y/15] - sq[i].pos.y < min)
 				min = maxY[sq[i].pos.x/15].pos.y - sq[i].pos.y;
+			else if ((int)maxY[sq[i].pos.y/15] > sq[i].pos.y) {
+				min = 0;
+				break;
+			}
 		}
 
 		for (int i=0; i < 4; i++) {

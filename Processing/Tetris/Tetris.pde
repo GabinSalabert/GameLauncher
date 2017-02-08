@@ -89,8 +89,12 @@ void clearLine() {
       if (lines[i][j] == null)
         full = false;
     }
+
     
     if (full) {
+      for (int i=0; i < maxY.lenght; i++) {
+        maxY[i] -= 15;
+      }
       shiftDown(i);
       i--;
     }
