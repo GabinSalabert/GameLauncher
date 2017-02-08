@@ -1,11 +1,12 @@
 enum Type{L, Lrev, I, Z, Zrev, Square} //TODO: T (initT())
 
 
-
 //DOWN -> 0
 //RIGHT -> 1
 //UP -> 2
 //LEFT -> 3
+
+
 class Brick {
   int xDir[];
   int yDir[];
