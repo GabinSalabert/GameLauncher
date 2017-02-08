@@ -1,5 +1,5 @@
 Brick b, d;
-
+Ghost g;
 int maxY[];
 Square lines[][];
 

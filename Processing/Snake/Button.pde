@@ -61,6 +61,16 @@ class Button {
     }
   }
   
+  public int retry() {
+    if (mousePressed) {
+      if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+        println("Ok, retrying.");
+        return 42;
+      }
+    }
+    return 0;
+  }
+  
   public int playS() {
     if (mousePressed) {
       if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
