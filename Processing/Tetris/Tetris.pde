@@ -28,7 +28,7 @@ void setup() {
 
   b = new Brick(30, (int)random(5));
   d = new Brick(0, (int)random(5));
-  g = new Ghost();
+
 }
 
 
@@ -50,8 +50,8 @@ void draw() {
 
   d.draw();
   b.fall();
-  g.update(b);
-  g.draw();
+  b.drawGhost();
+  
   b.draw();
   clearLine();
   if (b.frame == b.fspeed)
