@@ -105,9 +105,13 @@ void keyPressed() { //Direction in case of event
   }
   
   if (key == 'm' && music == true){
-    player.mute();
-    player2.mute();
-    player3.mute();
+    if (unJoueur == 0 && deuxJoueur == 0){
+      player.mute();
+    }
+    
+    if (unJoueur == 1 || deuxJoueur == 2){
+      player2.mute();
+    }
     music = false;
   }
   
@@ -148,6 +152,11 @@ void draw() {
     unJoueur = buttonSolo.playS();
     deuxJoueur = buttonDuo.playD();
   }
+  
+  
+  
+
+
 
 
 
@@ -210,6 +219,7 @@ void draw() {
     
     else {
       
+      player2.close();
       player3.play();
       fill(0, 200);
       rect(0, 0, width, height);
@@ -218,7 +228,7 @@ void draw() {
       //Write the message after loosing
       if (score < 10) { 
         fill(150, 150, 150);
-        text("Score : "+score + "\nYou're soooo bad, try again bro'..", width/2, height/3);
+        text("Score : "+score + "\nYou're so bad, try again..", width/2, height/3);
       } else if (score >= 10 && score < 20) { 
         fill(150, 150, 150);
         text("Score : "+score + "\nNot bad dude,\n but not enough to impress me..", width/2, height/3);
@@ -236,6 +246,9 @@ void draw() {
 
     turn = false;
   }
+
+
+
 
 
 
@@ -344,6 +357,7 @@ void draw() {
     
     else {
       
+      player2.close();
       player3.play();
       fill(0, 200);
       rect(0, 0, width, height);
