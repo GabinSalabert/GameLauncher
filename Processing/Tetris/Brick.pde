@@ -19,7 +19,8 @@ class Brick {
   boolean up, down, left, right;
   Type type;
   color c;
-  
+  Ghost g;
+  int underY[];
 
 
 
@@ -30,7 +31,7 @@ class Brick {
     xDir = new int[4];
     yDir = new int[4];
     patt = new int[3];
-    
+    g = new Ghost();
     switch (t) {
       case 0:
         initL();
@@ -67,6 +68,7 @@ class Brick {
       }
       return;
     }
+
 
     speed = sp;
     fspeed = sp;
@@ -105,6 +107,9 @@ class Brick {
     frame++;
     if (frame > fspeed)
       frame = 0;
+
+    updateUnderY();
+    g.update(this);
 
   }
 
@@ -161,6 +166,24 @@ class Brick {
   }
   
   
+  void updateUnderY() {
+    for (int i =0; i < 4; i++) { //for each square of the current brick
+      int x = sq[i].pos.x/15; //get x alignment
+      underY[i] = 0; //reset y value
+
+      for (int j=sq[i].pos.y/15; j < height/15; j++) { //for each square in the same column, starting from selected square
+        if (lines[j][i] == null) //if we do not encounter a square
+          underY[i] += 15; //increase gap beetween bottom and square
+        else
+          break;
+      }
+
+
+    }
+
+  }
+
+
   
   void initDir() {
     xDir = new int[4];
