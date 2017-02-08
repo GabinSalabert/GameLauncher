@@ -5,7 +5,7 @@ public class Ghost{
   color c;
 	Ghost() {
 		min=600;
-		c = new color(128, 128, 128, 128);
+		c = new color(128, 128, 128);
     
 	}
 
