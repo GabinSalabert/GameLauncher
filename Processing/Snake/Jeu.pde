@@ -5,6 +5,9 @@ public class Jeu {
   int item[] = new int[2];
   int frame = 0;
   int retry;
+  int sec = second(); 
+  int min = minute(); 
+  int h = hour(); 
 
 
   int bodyLength = 2;//first length, at the beginning
@@ -27,7 +30,7 @@ public class Jeu {
   boolean music = true;
 
   PImage img, img2;
-  
+
 
   public Jeu() {
     //Snake's head position
@@ -85,6 +88,8 @@ public class Jeu {
     //Mode Solo
 
     if (unJoueur == 1) { 
+      retry = 0;
+      deuxJoueur = 0;
       player.close();
       player2.play();
       background(0);
@@ -137,7 +142,9 @@ public class Jeu {
 
         fill(255); 
         text("Score : "+score, width/2, 10); //Write the message
-      } else {
+      } 
+      
+      else {
 
         player2.close();
         player3.play();
@@ -162,13 +169,14 @@ public class Jeu {
         buttonRetry.drawBr();
         buttonExit.quit();  
         retry = buttonRetry.retry();
-        if (retry == 42){
-          jeu = new Jeu();
-        }
       }
-
       turn = false;
     }
+
+    if (retry == 42) {
+      jeu = new Jeu();
+    }
+
 
 
 
@@ -187,6 +195,8 @@ public class Jeu {
     //Mode Duo
 
     if (deuxJoueur == 2) {
+      retry = 0;
+      unJoueur = 0;
       player.close();
       player2.play();
       background(0);
@@ -230,31 +240,33 @@ public class Jeu {
       }
 
       if (!over) {
-
-        for (int k = bodyLength-1; k > 0; k--) { //Browse the body but upside down and without the head. The body has to follow the head
-          body[k].setX(body[k-1].getX()); //Set the body[i] position with the body[i-1] position (x)
-          body[k].setY(body[k-1].getY()); //Set the body[i] position with the body[i-1] position (y)
+        if (frame == 5){
+          for (int k = bodyLength-1; k > 0; k--) { //Browse the body but upside down and without the head. The body has to follow the head
+            body[k].setX(body[k-1].getX()); //Set the body[i] position with the body[i-1] position (x)
+            body[k].setY(body[k-1].getY()); //Set the body[i] position with the body[i-1] position (y)
+          }
+          for (int l = bodyLength2-1; l > 0; l--) { //Browse the body but upside down and without the head. The body has to follow the head
+            body2[l].setX(body2[l-1].getX()); //Set the body[i] position with the body[i-1] position (x)
+            body2[l].setY(body2[l-1].getY()); //Set the body[i] position with the body[i-1] position (y)
+          }
+  
+          body[0].setX(head[0]); //Set the body's first part with the head position (x) 
+          body[0].setY(head[1]); //Set the body's first part with the head position (x)
+          body2[0].setX(head2[0]);
+          body2[0].setY(head2[1]);
+  
+          if (dir == 0) head[1] --; //Move head towards top
+          else if (dir == 1) head[0] ++; //Move head towards rigth
+          else if (dir == 2) head[1] ++; //Move head towards bottom
+          else head[0] --; //Move head towards left
+  
+          if (dir2 == 0) head2[1] --; //Move head towards top
+          else if (dir2 == 1) head2[0] ++; //Move head towards rigth
+          else if (dir2 == 2) head2[1] ++; //Move head towards bottom
+          else head2[0] --; //Move head towards left
         }
-        for (int l = bodyLength2-1; l > 0; l--) { //Browse the body but upside down and without the head. The body has to follow the head
-          body2[l].setX(body2[l-1].getX()); //Set the body[i] position with the body[i-1] position (x)
-          body2[l].setY(body2[l-1].getY()); //Set the body[i] position with the body[i-1] position (y)
-        }
-
-        body[0].setX(head[0]); //Set the body's first part with the head position (x) 
-        body[0].setY(head[1]); //Set the body's first part with the head position (x)
-        body2[0].setX(head2[0]);
-        body2[0].setY(head2[1]);
-
-        if (dir == 0) head[1] --; //Move head towards top
-        else if (dir == 1) head[0] ++; //Move head towards rigth
-        else if (dir == 2) head[1] ++; //Move head towards bottom
-        else head[0] --; //Move head towards left
-
-        if (dir2 == 0) head2[1] --; //Move head towards top
-        else if (dir2 == 1) head2[0] ++; //Move head towards rigth
-        else if (dir2 == 2) head2[1] ++; //Move head towards bottom
-        else head2[0] --; //Move head towards left
-
+  
+        frame = (frame+1) %6;
         if (head[0] == item[0] && head[1] == item[1]) {
           score++;
           item[0] = int(random(width/10));
@@ -281,9 +293,10 @@ public class Jeu {
 
 
         fill(255); 
-        text("Score : "+score, width/3, 10); //Write the message
-        text("Score : "+score2, width/1.5, 10); //Write the message
-      } else {
+        text(h+":"+min+":"+sec, width/2, 10);
+      } 
+      
+      else {
 
         player2.close();
         player3.play();
@@ -310,6 +323,10 @@ public class Jeu {
 
       turn = false;
       turn2 = false;
+    }
+
+    if (retry == 42) {
+      jeu = new Jeu();
     }
   }
 }
