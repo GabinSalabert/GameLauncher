@@ -50,8 +50,6 @@ void draw() {
 
   d.draw();
   b.fall();
-  b.drawGhost();
-  
   b.draw();
   clearLine();
   if (b.frame == b.fspeed)

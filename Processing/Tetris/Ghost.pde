@@ -5,11 +5,12 @@ public class Ghost{
   color c;
 	Ghost() {
 		min=600;
-		c = new color(128, 128, 128);
-    
+		c = color(128, 128, 128);
+    sq = new Square[4];
 	}
 
 	void draw() {
+  
 		min = 600;
 		for (int i : b.underY) { //GET LOWEST GAP TO BOTTOM BEETWEEN EACH SQUARE OF THE BRICK
 			if (i < min)
@@ -17,7 +18,7 @@ public class Ghost{
 		}
 
 		for (int i=0; i < 4; i++)
-			sq[i].pos.y += min
+			sq[i].pos.y += min;
 
 	}
 }

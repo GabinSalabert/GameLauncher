@@ -78,7 +78,7 @@ class Brick {
     down = false;
     left = false;
     right = false;
-    
+    underY = new int[4];
     type = Type.I;
 
   }
@@ -109,7 +109,7 @@ class Brick {
       frame = 0;
 
     updateUnderY();
-    g.update(this);
+    g.draw();
 
   }
 
@@ -168,10 +168,10 @@ class Brick {
   
   void updateUnderY() {
     for (int i =0; i < 4; i++) { //for each square of the current brick
-      int x = sq[i].pos.x/15; //get x alignment
-      underY[i] = 0; //reset y value
+      int x = (int)sq[i].pos.x/15; //get x alignment
+        underY[i] = 0; //reset y value
 
-      for (int j=sq[i].pos.y/15; j < height/15; j++) { //for each square in the same column, starting from selected square
+      for (int j=(int)sq[i].pos.y/15; j < height/15; j++) { //for each square in the same column, starting from selected square
         if (lines[j][i] == null) //if we do not encounter a square
           underY[i] += 15; //increase gap beetween bottom and square
         else
