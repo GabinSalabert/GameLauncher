@@ -26,8 +26,8 @@ void setup() {
     }
   }
 
-  b = new Brick(30, (int)random(5));
-  d = new Brick(0, (int)random(5));
+  b = new Brick(30, (int)random(6));
+  d = new Brick(0, (int)random(6));
 
 }
 
@@ -35,6 +35,7 @@ void setup() {
 
 void draw() {
   background(0);
+
   stroke(0);
   fill(100);
   rect(xMax, 0, width-xMax, height);
@@ -50,10 +51,13 @@ void draw() {
 
   d.draw();
   b.fall();
+  b.updateUnderY();
   b.draw();
   clearLine();
   if (b.frame == b.fspeed)
     pile();
+    
+
 }
 
 void pile() {
@@ -64,8 +68,11 @@ void pile() {
       lines[(int)b.sq[i].pos.y/15][(int)b.sq[i].pos.x/15] = new Square(b.sq[i], b.c); //add square to environnement
     }
     b = d;
-    d = new Brick(0, (int)random(5));
-    
+    b.underY = new int[4];
+    //b.updateUnderY();
+    b.g.draw(b);
+    d = new Brick(0, (int)random(6));
+
     b.sq[0] = new Square(xMax/2, 0, b.c);
     for (int i=1; i < 4; i++) {
       b.sq[i] = new Square(b.sq[i-1].pos.x + b.xDir[b.patt[i-1]], b.sq[i-1].pos.y + b.yDir[b.patt[i-1]], b.c); //express coordinates of index n with pattern and index n-1' coordinates
@@ -170,6 +177,12 @@ void keyPressed() {
     if (!wallRight())
       b.moveRight();
     keyCode = 0;
+  }
+  
+  if (key == 'z') {
+    for (int i =0; i < 4; i++) {
+      b.sq[i].pos = new PVector(b.g.sq[i].pos.x, b.g.sq[i].pos.y);
+    }
   }
 }
 
