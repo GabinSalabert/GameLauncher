@@ -4,7 +4,6 @@ import ddf.minim.*;
 
 
 Jeu jeu;
-int retry;
 AudioPlayer player, player2, player3;
 Minim minim;//audio context
 
@@ -86,4 +85,10 @@ void keyPressed() { //Direction in case of event
 
 void draw() {
   jeu.draw();
+  if (jeu.retry == 42) {
+    jeu = new Jeu();
+    println(jeu.unJoueur);
+    println(jeu.deuxJoueur);
+    println(jeu.retry);
+  }
 }

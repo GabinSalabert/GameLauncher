@@ -6,10 +6,10 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.ControllerMainMenu">
    <children>
@@ -17,16 +17,19 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="598.0" styleClass="root">
                <children>
-                  <Button layoutX="269.0" layoutY="274.0" mnemonicParsing="false" text="Play" />
+                  <Button layoutX="273.0" layoutY="277.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Play" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="276.0" />
                   <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="bord" />
                   <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../Downloads/Bannière-6.jpg" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="212.0" layoutY="108.0" />
                   <ParallelCamera layoutX="48.0" layoutY="39.0" />
-                  <TextArea fx:id="synopsis" editable="false" focusTraversable="false" layoutX="83.0" layoutY="149.0" mouseTransparent="true" prefHeight="119.0" prefWidth="419.0" />
+                  <TextArea fx:id="synopsis" editable="false" focusTraversable="false" layoutX="96.0" layoutY="149.0" prefHeight="119.0" prefWidth="419.0" wrapText="true" />
+                  <TextArea fx:id="titre" editable="false" layoutX="212.0" layoutY="86.0" prefHeight="54.0" prefWidth="189.0">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font></TextArea>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="598.0">
@@ -37,7 +40,7 @@
                         <Image url="@pictures/snake.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutX="301.0" layoutY="-80.0" pickOnBounds="true">
+                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutX="301.0" layoutY="-80.0" pickOnBounds="true" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-80.0">
                      <image>
                         <Image url="@pictures/tetris.jpg" />
                      </image>

@@ -12,13 +12,13 @@ public class Jeu {
 
   int bodyLength = 2;//first length, at the beginning
   int bodyLength2 = 2;
-  int dir = 0, dir2 = 0, score = 0, score2 = 0, state = 0, m;
+  int dir = 0, dir2 = 0, score, score2, state = 0, m, unJoueur, deuxJoueur;
 
   Body body[] = new Body[5000]; //Max length for snake
   Body body2[] = new Body[5000];
 
-  Button buttonExit = new Button(100, 320, 120, 50);
-  Button buttonRetry = new Button(500, 320, 120, 50);
+  Button buttonExit = new Button(300, 300, 120, 50);
+  Button buttonRetry = new Button(300, 370, 120, 50);
   Button buttonSolo = new Button(100, 320, 120, 50);
   Button buttonDuo = new Button(500, 320, 120, 50);
 
@@ -54,6 +54,12 @@ public class Jeu {
 
     img = loadImage("Ban4.jpg");
     img2 = loadImage("Snake.jpeg");
+  
+    retry = 0;
+    unJoueur = 0;
+    deuxJoueur = 0;
+    score = 0;
+    score2 = 0;
   }
 
 
@@ -70,8 +76,8 @@ public class Jeu {
 
   // Lauch the game, draw all we want (snake, item..) and allows moves. Also do some test for the game's end \\
   void draw() {
-    int i, j, unJoueur = 0, deuxJoueur = 0;
-  
+    int i, j;
+
     //Create the canva
     if (unJoueur == 0 && deuxJoueur == 0) {
       player.play();
@@ -91,9 +97,9 @@ public class Jeu {
 
     //Mode Solo
 
-    if (unJoueur == 1) { 
-      retry = 0;
+    else if (unJoueur == 1) { 
       deuxJoueur = 0;
+      retry = 0;
       player.close();
       player2.play();
       background(0);
@@ -149,7 +155,7 @@ public class Jeu {
       } 
       
       else {
-
+        
         player2.close();
         player3.play();
         fill(0, 200);
@@ -172,17 +178,14 @@ public class Jeu {
         buttonExit.drawBe();
         buttonRetry.drawBr();
         buttonExit.quit();  
-        retry = buttonRetry.retry();
+        this.retry = buttonRetry.retry();
+
+        
       }
+
       turn = false;
     }
 
-    if (retry == 42) {
-      retry = 0;
-      unJoueur = 0;
-      deuxJoueur = 0;
-      jeu = new Jeu();
-    }
 
 
 
@@ -201,7 +204,7 @@ public class Jeu {
 
     //Mode Duo
 
-    if (deuxJoueur == 2) {
+    else if (deuxJoueur == 2) {
       retry = 0;
       unJoueur = 0;
       player.close();
@@ -247,7 +250,7 @@ public class Jeu {
       }
 
       if (!over) {
-        if (frame == 5){
+        if (frame == 5) {
           for (int k = bodyLength-1; k > 0; k--) { //Browse the body but upside down and without the head. The body has to follow the head
             body[k].setX(body[k-1].getX()); //Set the body[i] position with the body[i-1] position (x)
             body[k].setY(body[k-1].getY()); //Set the body[i] position with the body[i-1] position (y)
@@ -256,23 +259,23 @@ public class Jeu {
             body2[l].setX(body2[l-1].getX()); //Set the body[i] position with the body[i-1] position (x)
             body2[l].setY(body2[l-1].getY()); //Set the body[i] position with the body[i-1] position (y)
           }
-  
+
           body[0].setX(head[0]); //Set the body's first part with the head position (x) 
           body[0].setY(head[1]); //Set the body's first part with the head position (x)
           body2[0].setX(head2[0]);
           body2[0].setY(head2[1]);
-  
+
           if (dir == 0) head[1] --; //Move head towards top
           else if (dir == 1) head[0] ++; //Move head towards rigth
           else if (dir == 2) head[1] ++; //Move head towards bottom
           else head[0] --; //Move head towards left
-  
+
           if (dir2 == 0) head2[1] --; //Move head towards top
           else if (dir2 == 1) head2[0] ++; //Move head towards rigth
           else if (dir2 == 2) head2[1] ++; //Move head towards bottom
           else head2[0] --; //Move head towards left
         }
-  
+
         frame = (frame+1) %6;
         if (head[0] == item[0] && head[1] == item[1]) {
           score++;
@@ -304,7 +307,7 @@ public class Jeu {
       } 
       
       else {
-
+        
         player2.close();
         player3.play();
         fill(0, 200);
@@ -325,12 +328,10 @@ public class Jeu {
         buttonExit.drawBe();
         buttonRetry.drawBr();
         buttonExit.quit();  
-        retry = buttonRetry.retry();
+        this.retry = buttonRetry.retry();
         
-        if (retry == 42) {
-          jeu = new Jeu();
-        }
-       }
+      }
+      
 
       turn = false;
       turn2 = false;
