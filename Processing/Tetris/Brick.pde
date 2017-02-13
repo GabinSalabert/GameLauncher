@@ -88,8 +88,12 @@ class Brick {
   }
 
   void draw() {
+    if (speed != 0) {
+      g.draw(this);
+    }
     for (int i=0; i < 4; i++) {
-      sq[i].draw();   
+      sq[i].draw(); 
+      
     }
   }
 
@@ -108,8 +112,7 @@ class Brick {
     if (frame > fspeed)
       frame = 0;
 
-    updateUnderY();
-    g.draw();
+
 
   }
 
@@ -167,12 +170,13 @@ class Brick {
   
   
   void updateUnderY() {
+    for (int i=0; i < 4; i++)
+      underY[i] = 0;
+      
     for (int i =0; i < 4; i++) { //for each square of the current brick
-      int x = (int)sq[i].pos.x/15; //get x alignment
-        underY[i] = 0; //reset y value
-
+      
       for (int j=(int)sq[i].pos.y/15; j < height/15; j++) { //for each square in the same column, starting from selected square
-        if (lines[j][i] == null) //if we do not encounter a square
+        if (j >= 0 && lines[j][(int)sq[i].pos.x/15] == null) //if we do not encounter a square
           underY[i] += 15; //increase gap beetween bottom and square
         else
           break;

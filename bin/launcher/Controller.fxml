@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.ParallelCamera?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
@@ -9,7 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.ControllerMainMenu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.ControllerMainMenu">
    <children>
       <SplitPane centerShape="false" dividerPositions="0.8" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" scaleShape="false">
         <items>
@@ -18,11 +24,14 @@
                   <Button layoutX="269.0" layoutY="274.0" mnemonicParsing="false" text="Play" />
                   <TextField fx:id="synopsis" layoutX="89.0" layoutY="157.0" prefHeight="108.0" prefWidth="405.0" text="gnfgnfdg,dgh,dggggg,dghnsdfbeqsnsgftjytk,tydngsrnsgbnsbsern" />
                   <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="bord">
+                  <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../Downloads/Bannière-6.jpg" />
                      </image>
                   </ImageView>
                   <TextField layoutX="212.0" layoutY="108.0" />
+                  <ParallelCamera layoutX="48.0" layoutY="39.0" />
+                  <TextArea fx:id="synopsis" editable="false" focusTraversable="false" layoutX="83.0" layoutY="149.0" mouseTransparent="true" prefHeight="119.0" prefWidth="419.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="598.0">
