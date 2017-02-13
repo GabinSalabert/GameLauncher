@@ -12,7 +12,7 @@ public class Jeu {
 
   int bodyLength = 2;//first length, at the beginning
   int bodyLength2 = 2;
-  int dir = 0, dir2 = 0, score = 0, score2 = 0, state = 0, unJoueur = 0, deuxJoueur = 0, m;
+  int dir = 0, dir2 = 0, score = 0, score2 = 0, state = 0, m;
 
   Body body[] = new Body[5000]; //Max length for snake
   Body body2[] = new Body[5000];
@@ -70,8 +70,8 @@ public class Jeu {
 
   // Lauch the game, draw all we want (snake, item..) and allows moves. Also do some test for the game's end \\
   void draw() {
-    int i, j;
-
+    int i, j, unJoueur = 0, deuxJoueur = 0;
+  
     //Create the canva
     if (unJoueur == 0 && deuxJoueur == 0) {
       player.play();
@@ -85,10 +85,15 @@ public class Jeu {
       deuxJoueur = buttonDuo.playD();
     }
 
+
+
+
+
     //Mode Solo
 
     if (unJoueur == 1) { 
       retry = 0;
+      deuxJoueur = 0;
       player.close();
       player2.play();
       background(0);
@@ -198,6 +203,7 @@ public class Jeu {
 
     if (deuxJoueur == 2) {
       retry = 0;
+      unJoueur = 0;
       player.close();
       player2.play();
       background(0);

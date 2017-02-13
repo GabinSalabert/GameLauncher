@@ -65,6 +65,8 @@ class Button {
     if (mousePressed) {
       if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
         println("Ok, retrying.");
+        println(jeu.unJoueur);
+        println(jeu.deuxJoueur);
         return 42;
       }
     }

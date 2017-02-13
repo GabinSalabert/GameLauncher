@@ -8,6 +8,6 @@
 	-fx-fill: red;
 }*/
 
-body{
-	-fx-background-color: grey;
+.root{
+	-fx-background-color: #241023;
 }

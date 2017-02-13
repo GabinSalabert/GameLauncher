@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.ParallelCamera?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import java.net.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launcher.ControllerMainMenu">
    <children>
       <SplitPane centerShape="false" dividerPositions="0.8" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" scaleShape="false">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="598.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="598.0" styleClass="root">
                <children>
                   <Button layoutX="269.0" layoutY="274.0" mnemonicParsing="false" text="Play" />
-                  <TextField fx:id="synopsis" layoutX="91.0" layoutY="168.0" prefHeight="99.0" prefWidth="405.0" />
-                  <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="synopsis" layoutX="89.0" layoutY="157.0" prefHeight="108.0" prefWidth="405.0" text="gnfgnfdg,dgh,dggggg,dghnsdfbeqsnsgftjytk,tydngsrnsgbnsbsern" />
+                  <ImageView fitHeight="67.0" fitWidth="519.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="bord">
                      <image>
                         <Image url="@../../../../../Downloads/Bannière-6.jpg" />
                      </image>
                   </ImageView>
-                  <ParallelCamera layoutX="48.0" layoutY="39.0" />
-                  <PasswordField layoutX="209.0" layoutY="131.0" />
-                  <TextField layoutX="209.0" layoutY="93.0" />
+                  <TextField layoutX="212.0" layoutY="108.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="598.0">
                <children>
                   <Separator layoutX="296.0" orientation="VERTICAL" prefHeight="77.0" prefWidth="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="296.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutY="1.0" opacity="0.58" pickOnBounds="true">
+                  <ImageView fitHeight="161.0" fitWidth="315.0" layoutX="-7.0" layoutY="-4.0" pickOnBounds="true">
                      <image>
-                        <Image url="@pictures/snake.png" />
+                        <Image url="@../../../../Capture%20d’écran%202017-02-09%20à%2009.34.41.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutX="301.0" layoutY="-80.0" opacity="0.58" pickOnBounds="true">
+                  <ImageView fitHeight="161.0" fitWidth="297.0" layoutX="301.0" layoutY="-80.0" pickOnBounds="true">
                      <image>
                         <Image url="@pictures/tetris.jpg" />
                      </image>
